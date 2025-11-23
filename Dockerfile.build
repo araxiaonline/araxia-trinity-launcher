@@ -1,0 +1,27 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies for electron-builder
+RUN apk add --no-cache \
+    wine \
+    wine-libs \
+    wine-dev
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Set production environment
+ENV NODE_ENV=production
+
+# Build the application
+RUN npm run build
+
+# The output will be in /app/dist
+CMD ["sh", "-c", "echo 'Build complete! Check the dist folder.'"]

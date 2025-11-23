@@ -1,0 +1,28 @@
+version: 2
+autoConnect: true
+servers:
+  - name: "BattleNet Server"
+    host: "home.araxiaonline.cc"
+    serverType: "auth"
+    tunnels:
+      - localPort: 1119
+        remotePort: 1119
+        name: "BattleNet Auth"
+      - localPort: 8081
+        remotePort: 8081
+        name: "BattleNet Realm"
+  - name: "Trinity Prod"
+    host: "home.araxiaonline.cc"
+    serverType: "world"
+    tunnels:
+      - localPort: 8085
+        remotePort: 8085
+        name: "Prod"
+  # Example: Add more world servers with different local ports
+  - name: "Trinity Dev"
+    host: "home.araxiaonline.cc"
+    serverType: "world"
+    tunnels:
+      - localPort: 8086
+        remotePort: 8086
+        name: "Dev"
